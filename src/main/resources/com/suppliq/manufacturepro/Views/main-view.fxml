@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.suppliq.manufacturepro.Controllers.MainController"
+            fx:id="mainPane"
+            stylesheets="@../Styles/application.css">
+    <top>
+        <HBox fx:id="topBar" spacing="100" prefHeight="50" minHeight="70" alignment="CENTER">
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="storeNameLabel" text="Store Name" styleClass="top-bar-label" alignment="CENTER"/>
+            <ImageView fx:id="logo" fitHeight="100" fitWidth="200" preserveRatio="true" smooth="true" />
+        </HBox>
+    </top>
+    <right>
+        <VBox fx:id="sideMenu" spacing="0" style="-fx-padding: 0;" prefWidth="200" BorderPane.alignment="CENTER">
+            <Button text="בית" onAction="#showHomeView" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מוצרים" onAction="#showProductView" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="דוחות" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <!-- הוסף כפתורים נוספים לפי הצורך -->
+            <Button text="מסך 1" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מסך 2" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מסך 3" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מסך 4" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מסך 5" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מסך 6" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מסך 7" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מסך 8" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מסך 9" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מסך 10" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מסך 11" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מסך 12" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מסך 13" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מסך 14" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+
+            <!-- SuppliQ branding -->
+            <Region VBox.vgrow="ALWAYS" />
+            <Label text="SuppliQ" styleClass="branding-label"
+                   alignment="CENTER"
+                   maxWidth="Infinity" />
+        </VBox>
+    </right>
+    <center>
+        <!-- The center will be dynamically loaded based on the user's selection -->
+    </center>
+</BorderPane>

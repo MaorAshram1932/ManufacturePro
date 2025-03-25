@@ -1,0 +1,193 @@
+/* General Root Styling */
+.root {
+    -fx-background-color: #f4f4f4;
+    -fx-padding: 0;
+    -fx-text-alignment: right;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* יישור כל האלמנטים לימין (RTL) */
+#mainContainer, #tableContainer, .top-bar, .table-view {
+    -fx-node-orientation: right-to-left;
+}
+
+/* Top Bar (Header) */
+.top-bar {
+    -fx-padding: 10px;
+    -fx-background-color: #007bff;
+    -fx-alignment: center;
+    -fx-border-radius: 10px;
+    -fx-node-orientation: right-to-left;
+}
+
+
+/* "Add Product" Button */
+.add-button {
+    -fx-background-color: #28a745;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 5px 15px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.1), 3, 0, 0, 1);
+}
+
+/* Main TableView */
+
+/* Table border */
+.table-view {
+    -fx-border-color: #ddd;
+    -fx-background-color: white;
+    -fx-border-radius: 5px;
+    -fx-padding: 0;
+}
+
+/* Table headers labels */
+.table-view .column-header .label {
+    -fx-alignment: RIGHT;
+    -fx-text-alignment: right;
+    -fx-font-weight: bold;
+}
+
+/* Table rows appearance */
+.table-row-cell {
+    -fx-padding: 5px; /* text padding */
+    -fx-font-size: 14px; /* text cell font size */
+}
+
+/* Hover effect on rows */
+.table-row-cell:hover {
+    -fx-background-color: #e6f0ff;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #ffffff;
+}
+
+/* Buttons inside Table (Edit/Delete) */
+.button {
+    -fx-padding: 5px 10px;
+    -fx-font-size: 12px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+}
+
+/* Hover effect for all buttons */
+.button:hover {
+    -fx-opacity: 0.85;
+}
+
+.action-button {
+    -fx-padding: 5px 10px;
+    -fx-font-size: 12px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+}
+
+.edit-button {
+    -fx-background-color: #ffc107;
+    -fx-text-fill: black;
+}
+
+.delete-button {
+    -fx-background-color: #dc3545;
+    -fx-text-fill: white;
+}
+
+.button:pressed {
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+.main-background {
+    -fx-background-color: #f9f9f9;
+}
+
+.main-container {
+    -fx-padding: 20;
+}
+
+.page-header {
+    -fx-background-color: #ffffff;
+    -fx-padding: 15;
+    -fx-border-color: #dddddd;
+    -fx-border-width: 0 0 1 0;
+}
+
+.header-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.search-field {
+    -fx-pref-width: 250;
+    -fx-background-color: #f1f1f1;
+    -fx-background-radius: 5;
+    -fx-border-color: transparent;
+    -fx-padding: 6;
+    -fx-prompt-text-fill: #888888;
+}
+
+.product-table {
+    -fx-background-color: white;
+    -fx-border-radius: 5;
+}
+
+
+.dialog-container {
+    -fx-background-color: white;
+    -fx-padding: 25;
+    -fx-spacing: 15;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 4);
+}
+
+.form-field {
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+    -fx-font-size: 13px;
+    -fx-pref-width: 350;
+    -fx-wrap-text: true;
+}
+
+.header-label-dark {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-letter-spacing: 0.5px;
+}
+
+.save-button {
+    -fx-background-color: #28a745;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 16;
+    -fx-background-radius: 5;
+}
+
+.cancel-button {
+    -fx-background-color: #cccccc;
+    -fx-text-fill: #333333;
+    -fx-padding: 8 16;
+    -fx-background-radius: 5;
+}
+
+
+
+
+
+
+
+
+
+

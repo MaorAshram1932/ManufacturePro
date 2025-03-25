@@ -1,0 +1,82 @@
+/* סגנון כללי לכפתורי הניווט */
+.nav-button {
+    -fx-background-color: #0078d7;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 50px;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 10;
+}
+
+.nav-button:hover {
+    -fx-background-color: #005a9e;
+}
+
+.nav-button:focused {
+    -fx-background-color: #004080;
+}
+
+/* סגנון לתפריט הצדדי */
+#sideMenu {
+    -fx-border-color: gray;
+    -fx-border-width: 0 0 0 0;  /* Border on the left side now */
+    -fx-background-color: #ffffff;  /* Background color for the side menu */
+}
+
+
+/* סגנון לשורת הגלילה */
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #D0D0D0; /* צבע הרקע של שורת הגלילה */
+    -fx-background-insets: 0;
+}
+
+
+/* סגנון לבר העליון */
+#topBar {
+    -fx-background-color: #ffffff;  /* Background color for the top bar */
+    -fx-min-height: 70px;  /* Set the minimum height */
+    -fx-alignment: CENTER; /* Center align the content */
+}
+
+/* סגנון לתווית שם החנות */
+.top-bar-label {
+    -fx-font-size: 24px; /* Increase font size */
+    -fx-font-weight: bold; /* Make font bold */
+    -fx-text-fill: black;
+    -fx-alignment: CENTER;  /* Center align the text */
+}
+
+/* סגנון ללוגו */
+#logo {
+    -fx-alignment: CENTER_RIGHT;
+}
+
+/* סגנון לתווית המרכזית */
+.center-label {
+    -fx-font-size: 24px;
+    -fx-text-fill: black;
+    -fx-alignment: CENTER;
+}
+
+.branding-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #888888;
+    -fx-padding: 10;
+    -fx-alignment: center;
+}
+
+.top-bar {
+    -fx-background-color: #fdfdfd;
+    -fx-padding: 10 30;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.05), 4, 0, 0, 2);
+}
+
+.store-name-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}

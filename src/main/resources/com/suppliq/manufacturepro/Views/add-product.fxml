@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.suppliq.manufacturepro.Controllers.AddProductController"
+      spacing="15" alignment="TOP_RIGHT"
+      prefWidth="420" prefHeight="500"
+      nodeOrientation="RIGHT_TO_LEFT"
+      stylesheets="@../Styles/product-style.css"
+      styleClass="dialog-container">
+
+    <!-- כותרת -->
+    <Label fx:id="formTitleLabel"
+           text="📦 הוסף מוצר חדש"
+           styleClass="header-label-dark"
+           alignment="CENTER"
+           maxWidth="Infinity"/>
+
+    <!-- שדות טופס -->
+    <TextField fx:id="nameField" promptText="שם המוצר" styleClass="form-field"/>
+    <TextArea fx:id="descriptionField" promptText="תיאור" styleClass="form-field"/>
+    <TextField fx:id="priceField" promptText="מחיר" styleClass="form-field"/>
+    <TextField fx:id="stockField" promptText="כמות במלאי" styleClass="form-field"/>
+    <TextField fx:id="categoryField" promptText="קטגוריה" styleClass="form-field"/>
+
+    <!-- כפתורים -->
+    <HBox spacing="12" alignment="CENTER_RIGHT">
+        <Button text="שמירה" fx:id="saveButton" styleClass="save-button"/>
+        <Button text="ביטול" fx:id="cancelButton" styleClass="cancel-button"/>
+    </HBox>
+</VBox>
