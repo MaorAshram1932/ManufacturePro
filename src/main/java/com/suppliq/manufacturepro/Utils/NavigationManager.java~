@@ -1,0 +1,4 @@
+package com.suppliq.manufacturepro.Utils;
+
+public class NavigationManager {
+}

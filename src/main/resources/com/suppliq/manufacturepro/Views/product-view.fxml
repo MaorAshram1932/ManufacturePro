@@ -8,12 +8,16 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.suppliq.manufacturepro.Controllers.ProductController"
             stylesheets="@../Styles/product-style.css"
-            styleClass="main-background">
+            styleClass="main-background"
+            style="-fx-padding: 10">
 
     <!-- Vertical layout: stacks elements top to bottom -->
+    <!-- spacing="15" -  רווח בין הטבלה לטופ בר -->
+    <!-- nodeOrientation="RIGHT_TO_LEFT" -  RTL של כל התצוגה מימין למשאל -->
+    <!--  style="-fx-padding: 10" - רווח מהכל הצדדים   -->
+
     <VBox fx:id="mainContainer"
           spacing="15"
-          alignment="TOP_RIGHT"
           nodeOrientation="RIGHT_TO_LEFT"
           AnchorPane.topAnchor="0"
           AnchorPane.bottomAnchor="0"
@@ -22,7 +26,12 @@
           styleClass="main-container">
 
         <!-- Top bar: contains the page title and "Add Product" button -->
-        <HBox spacing="20" alignment="CENTER_RIGHT" styleClass="page-header">
+        <HBox spacing="20"
+              alignment="CENTER_RIGHT"
+              nodeOrientation="RIGHT_TO_LEFT"
+              styleClass="page-header"
+              style="-fx-padding: 15;">
+
             <Label text="📦 ניהול מוצרים" styleClass="header-label"/>
             <Region fx:id="spacer" HBox.hgrow="ALWAYS"/>
             <TextField fx:id="searchField" promptText="חפש לפי שם מוצר..." styleClass="search-field"/>
@@ -34,19 +43,21 @@
         <AnchorPane fx:id="tableContainer" VBox.vgrow="ALWAYS">
 
             <!-- Products Table -->
-            <TableView fx:id="productTable" prefWidth="800" prefHeight="400"
+            <TableView fx:id="productTable"
+                       fixedCellSize="40"
                        AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
                        AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+
                        styleClass="product-table">
-            <!-- Table Columns -->
+                <!-- Table Columns -->
                 <columns>
-                    <TableColumn fx:id="columnId" text="מזהה" prefWidth="50"/>
-                    <TableColumn fx:id="columnName" text="שם המוצר" prefWidth="200"/>
-                    <TableColumn fx:id="columnDescription" text="תיאור" prefWidth="300"/>
-                    <TableColumn fx:id="columnPrice" text="מחיר (₪)" prefWidth="120"/>
-                    <TableColumn fx:id="columnStock" text="מלאי" prefWidth="100"/>
-                    <TableColumn fx:id="columnCategory" text="קטגוריה" prefWidth="150"/>
-                    <TableColumn fx:id="columnActions" text="פעולות" prefWidth="180"/>
+                    <TableColumn fx:id="columnId" text="מזהה"/>
+                    <TableColumn fx:id="columnName" text="שם המוצר"/>
+                    <TableColumn fx:id="columnDescription" text="תיאור"/>
+                    <TableColumn fx:id="columnPrice" text="מחיר (₪)"/>
+                    <TableColumn fx:id="columnStock" text="מלאי"/>
+                    <TableColumn fx:id="columnCategory" text="קטגוריה"/>
+                    <TableColumn fx:id="columnActions" text="פעולות"/>
                 </columns>
             </TableView>
         </AnchorPane>

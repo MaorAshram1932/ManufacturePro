@@ -14,11 +14,6 @@ public class ConsoleFormatter extends Formatter {
 
     @Override
     public String format(LogRecord record) {
-        // סנן לוגים שלא מהקוד שלך
-        if (!record.getLoggerName().startsWith("com.suppliq.manufacturepro")) {
-            return ""; // התעלם לגמרי
-        }
-
         String level = record.getLevel().getName();
 
         String color;

@@ -1,0 +1,50 @@
+package com.suppliq.manufacturepro.Base;
+
+import com.suppliq.manufacturepro.Controllers.ProductController;
+import com.suppliq.manufacturepro.Database.DataCache;
+import com.suppliq.manufacturepro.Database.ViewCache;
+import com.suppliq.manufacturepro.Utils.LoggerManager;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.Node;
+
+public class NavigationManager {
+    //private static AppView currentView;
+    private static BorderPane mainContainer;
+
+    // מחברים את ה־mainPane פעם אחת באתחול
+    public static void setMainContainer(BorderPane container) {
+        mainContainer = container;
+    }
+
+    // מעבר לעמוד לפי enum
+    public static void goTo(AppView view) {
+        //currentView = view;
+        if (mainContainer == null) {
+            throw new IllegalStateException("Main container not set. Use setMainContainer() first.");
+        }
+
+        loadView(view);
+    }
+
+    private static void loadView(AppView view) {
+        Node node = ViewCache.getInstance().getView(view.getFileName());
+        mainContainer.setCenter(node);
+    }
+
+//    public static void reloadCurrentView() {
+//        if (currentView == null || mainContainer == null) return;
+//
+//        ViewCache.getInstance().clear(currentView.getFileName());
+//        loadView(currentView);
+//        ProductController productController = ViewCache.getInstance().getController(AppView.PRODUCTS.getFileName());
+//        productController.setProductList(DataCache.products);
+//    }
+
+    // שליפת קונטרולר (במקרה שצריך מחוץ)
+    public static <T> T getController(AppView view) {
+        return ViewCache.getInstance().getController(view.getFileName());
+    }
+
+
+
+}

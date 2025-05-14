@@ -72,7 +72,6 @@ public class MainController {
 
             // טען את ה־CSS המקורי → צור עותק זמני
             Path originalCss = Paths.get("src/main/resources/com/suppliq/manufacturepro/Styles/product-style.css");
-            cleanTempCssFiles();
             String tempFileName = "product-style-temp-" + System.currentTimeMillis() + ".css";
             Path tempCss = Paths.get("src/main/resources/com/suppliq/manufacturepro/Styles/" + tempFileName);
 

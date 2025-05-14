@@ -1,13 +1,26 @@
-# Root logger settings
+# ✅ Root logger settings
 handlers=java.util.logging.FileHandler, java.util.logging.ConsoleHandler
 .level=FINE
 
-# Console output
+# ✅ Suppress noisy system logs
+javafx.level = INFO
+sun.level = INFO
+java.level = INFO
+com.sun.level = INFO
+javax.level = INFO
+sun.security.ssl.level = INFO
+sun.security.ssl.X509TrustManagerImpl.level = INFO
+jdk.internal.level = INFO
+
+# ✅ Enable debug only for your code
+com.suppliq.manufacturepro.level = FINE
+
+# ✅ Console output
 java.util.logging.ConsoleHandler.level=FINE
 java.util.logging.ConsoleHandler.formatter=com.suppliq.manufacturepro.Utils.ConsoleFormatter
 java.util.logging.ConsoleHandler.encoding=UTF-8
 
-# File output
+# ✅ File output
 java.util.logging.FileHandler.level=INFO
 java.util.logging.FileHandler.pattern=logs/app.log
 java.util.logging.FileHandler.limit=1000000

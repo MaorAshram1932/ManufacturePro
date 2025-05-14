@@ -9,10 +9,6 @@ public class FileFormatter extends Formatter {
 
     @Override
     public String format(LogRecord record) {
-        // סינון – כתוב לקובץ רק אם הלוג הגיע מהקוד שלך
-        if (!record.getLoggerName().startsWith("com.suppliq.manufacturepro")) {
-            return ""; // התעלם מלוגים חיצוניים
-        }
         String level = record.getLevel().getName();
 
         StringBuilder builder = new StringBuilder();

@@ -127,7 +127,7 @@ public class ProductController {
                             columnCategory.getWidth() +
                             columnActions.getWidth();
 
-            double tableWidth = productTable.getFixedCellSize();
+            double tableWidth = productTable.getMaxWidth();
             double descriptionWidth = tableWidth - totalWidth;
             LoggerManager.logDebug(descriptionWidth+"");
             LoggerManager.logDebug(totalWidth+"");

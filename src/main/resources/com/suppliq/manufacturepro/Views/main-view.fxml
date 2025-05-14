@@ -10,34 +10,32 @@
             fx:id="mainPane"
             stylesheets="@../Styles/application.css">
     <top>
-        <HBox fx:id="topBar" spacing="100" prefHeight="50" minHeight="70" alignment="CENTER">
-            <Region HBox.hgrow="ALWAYS"/>
+        <HBox fx:id="topBar" spacing="20" minHeight="60" alignment="CENTER_LEFT">
+            <Label fx:id="reloadLabel" text="🔁" onMouseClicked="#reloadFromSource"
+                   style="-fx-font-size: 18px; -fx-cursor: hand;" />
+            <Region fx:id="leftSpacer" HBox.hgrow="ALWAYS"/>
             <Label fx:id="storeNameLabel" text="Store Name" styleClass="top-bar-label" alignment="CENTER"/>
+            <Region fx:id="rightSpacer" HBox.hgrow="ALWAYS"/>
             <ImageView fx:id="logo" fitHeight="100" fitWidth="200" preserveRatio="true" smooth="true" />
         </HBox>
     </top>
     <right>
-        <VBox fx:id="sideMenu" spacing="0" style="-fx-padding: 0;" prefWidth="200" BorderPane.alignment="CENTER">
-            <Button text="בית" onAction="#showHomeView" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="מוצרים" onAction="#showProductView" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="דוחות" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <!-- הוסף כפתורים נוספים לפי הצורך -->
-            <Button text="מסך 1" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="מסך 2" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="מסך 3" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="מסך 4" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="מסך 5" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="מסך 6" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="מסך 7" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="מסך 8" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="מסך 9" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="מסך 10" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="מסך 11" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="מסך 12" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="מסך 13" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="מסך 14" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
 
-            <!-- SuppliQ branding -->
+        <VBox fx:id="sideMenu"
+              spacing="0"
+              style="-fx-padding: 0;"
+              prefWidth="200"
+              minWidth="100"
+              maxWidth="250"
+              BorderPane.alignment="CENTER">
+            <Button text="בית" onAction="#showHome" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="הזמנות" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מוצרים" onAction="#showProducts" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="דוחות" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="לקוחות" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="הגדרות" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="יציאה" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+
             <Region VBox.vgrow="ALWAYS" />
             <Label text="SuppliQ" styleClass="branding-label"
                    alignment="CENTER"
@@ -45,6 +43,8 @@
         </VBox>
     </right>
     <center>
-        <!-- The center will be dynamically loaded based on the user's selection -->
+        <StackPane fx:id="contentPane">
+            <!-- כאן נטען את ה־FXML של כל מסך (כמו מוצרים, הזמנות וכו') -->
+        </StackPane>
     </center>
 </BorderPane>
