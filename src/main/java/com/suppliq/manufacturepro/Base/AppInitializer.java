@@ -29,8 +29,8 @@ public class AppInitializer {
     private static void preloadViews() {
         BenchmarkTimer.markStart("טעינת תצוגות");
         ViewCache cache = ViewCache.getInstance();
-        cache.preload(AppView.HOME.getFileName());
-        cache.preload(AppView.PRODUCTS.getFileName());
+        cache.preload(AppView.HOME);
+        cache.preload(AppView.PRODUCTS);
         //cache.preload(AppView.CUSTOMERS.getFileName());
         //cache.preload(AppView.ORDERS.getFileName());
         // תוסיף כאן עוד עמודים שתרצה לטעון מראש
@@ -39,7 +39,7 @@ public class AppInitializer {
 
     private static void bindDataToViews() {
         BenchmarkTimer.markStart("חיבור נתונים לתצוגות");
-        ProductController productController = ViewCache.getInstance().getController(AppView.PRODUCTS.getFileName());
+        ProductController productController = ViewCache.getInstance().getController(AppView.PRODUCTS);
         productController.setProductList(DataCache.products);
         BenchmarkTimer.markEnd("חיבור נתונים לתצוגות");
     }

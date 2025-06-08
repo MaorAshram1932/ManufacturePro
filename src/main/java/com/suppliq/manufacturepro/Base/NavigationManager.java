@@ -8,7 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.Node;
 
 public class NavigationManager {
-    //private static AppView currentView;
+    private static AppView currentView;
     private static BorderPane mainContainer;
 
     // מחברים את ה־mainPane פעם אחת באתחול
@@ -18,7 +18,7 @@ public class NavigationManager {
 
     // מעבר לעמוד לפי enum
     public static void goTo(AppView view) {
-        //currentView = view;
+        currentView = view;
         if (mainContainer == null) {
             throw new IllegalStateException("Main container not set. Use setMainContainer() first.");
         }
@@ -27,7 +27,7 @@ public class NavigationManager {
     }
 
     private static void loadView(AppView view) {
-        Node node = ViewCache.getInstance().getView(view.getFileName());
+        Node node = ViewCache.getInstance().getView(view);
         mainContainer.setCenter(node);
     }
 
@@ -42,7 +42,12 @@ public class NavigationManager {
 
     // שליפת קונטרולר (במקרה שצריך מחוץ)
     public static <T> T getController(AppView view) {
-        return ViewCache.getInstance().getController(view.getFileName());
+        return ViewCache.getInstance().getController(view);
+    }
+
+
+    public static AppView getCurrentView() {
+        return currentView;
     }
 
 
