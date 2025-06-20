@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+  Root layout: Anchors the main VBox container to all sides of the window.
+  Uses external stylesheet and applies general padding and RTL layout for Hebrew support.
+-->
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.suppliq.manufacturepro.Controllers.PriceListController"
+            styleClass="page-background">
+
+    <!--
+      Main container: vertical layout holding the top header and the two price tables.
+      Applies spacing between elements and sets overall RTL layout direction.
+    -->
+    <VBox fx:id="mainContainer"
+          spacing="15"
+          nodeOrientation="RIGHT_TO_LEFT"
+          AnchorPane.topAnchor="0"
+          AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0"
+          AnchorPane.rightAnchor="0"
+          styleClass="main-container">
+
+        <!--
+           Top bar (HBox): Contains the page title, search field, and 'Add Price List' button.
+           Elements are aligned to the right and spaced evenly.
+        -->
+        <HBox spacing="20"
+              alignment="CENTER_RIGHT"
+              nodeOrientation="RIGHT_TO_LEFT"
+              styleClass="page-header">
+
+            <!-- Page title -->
+            <Label text="📋 ניהול מחירונים" styleClass="page-header-label"/>
+
+            <!-- Flexible spacer pushes content to the sides -->
+            <Region fx:id="spacer" HBox.hgrow="ALWAYS"/>
+
+            <!-- Search field for filtering price lists -->
+            <TextField fx:id="searchField" promptText="חפש לפי שם מחירון..." styleClass="search-field"/>
+
+            <!-- Button for creating a new price list -->
+            <Button text="➕ צור מחירון" fx:id="addButton" onAction="#addPriceList" styleClass="add-button"/>
+        </HBox>
+
+        <!-- Main content: dual table area -->
+        <AnchorPane VBox.vgrow="ALWAYS">
+            <HBox spacing="10"
+                  AnchorPane.topAnchor="0"
+                  AnchorPane.bottomAnchor="0"
+                  AnchorPane.leftAnchor="0"
+                  AnchorPane.rightAnchor="0">
+
+                <!-- Price Lists Table -->
+                <VBox spacing="10" styleClass="dialog-container" HBox.hgrow="ALWAYS" maxWidth="400"  maxHeight="430">
+                    <Label text="📑 רשימת מחירונים" styleClass="header-label-dark"/>
+                    <TableView fx:id="priceListTable"
+                               fixedCellSize="40"
+                               maxHeight="430"
+                               styleClass="product-table">
+                        <columns>
+                            <TableColumn fx:id="columnPriceListName" text="שם מחירון"/>
+                            <TableColumn fx:id="columnActions" text="פעולות"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!-- Price List Items Table -->
+                <VBox spacing="10" styleClass="dialog-container" maxHeight="430" HBox.hgrow="ALWAYS">
+                    <Label text="📝 פרטי מחירון נבחר" styleClass="header-label-dark"/>
+                    <TableView fx:id="priceListItemTable"
+                               fixedCellSize="40"
+                               prefHeight="430"
+                               styleClass="product-table"
+                               maxHeight="430">
+                        <columns>
+                            <TableColumn fx:id="columnProductName" text="שם מוצר"/>
+                            <TableColumn fx:id="columnPrice" text="מחיר (₪)"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </HBox>
+        </AnchorPane>
+
+    </VBox>
+</AnchorPane>

@@ -1,5 +1,6 @@
 package com.suppliq.manufacturepro.Database;
 
+import com.suppliq.manufacturepro.Base.AppView;
 import com.suppliq.manufacturepro.Utils.LoggerManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,7 +15,7 @@ public class ViewCache {
     private static ViewCache instance;
 
 
-    private final Map<String, Pair<Node, Object>> cachedViews = new HashMap<>();
+    private final Map<AppView, Pair<Node, Object>> cachedViews = new HashMap<>();
 
     private ViewCache() {
     }
@@ -26,35 +27,38 @@ public class ViewCache {
         return instance;
     }
 
-    public void preload(String fxmlFile) {
-        if (!cachedViews.containsKey(fxmlFile)) {
+    public void preload(AppView view) {
+        if (!cachedViews.containsKey(view)) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/suppliq/manufacturepro/Views/" + fxmlFile));
-                Node view = loader.load();
+                FXMLLoader loader = new FXMLLoader(view.getViewUrl());
+                Node loadedView = loader.load();
                 Object controller = loader.getController();
-                cachedViews.put(fxmlFile, new Pair<>(view, controller));
+                cachedViews.put(view, new Pair<>(loadedView, controller));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public Node getView(String fxmlFile) {
-        if (!cachedViews.containsKey(fxmlFile)) {
-            preload(fxmlFile); // אופציונלי - טען אם לא נטען עדיין
+
+
+    public Node getView(AppView view) {
+        if (!cachedViews.containsKey(view)) {
+            preload(view);
         }
-        return cachedViews.get(fxmlFile).getKey();
+        return cachedViews.get(view).getKey();
     }
 
-    public <T> T getController(String fxmlFile) {
-        if (!cachedViews.containsKey(fxmlFile)) {
-            preload(fxmlFile);
+    @SuppressWarnings("unchecked")
+    public <T> T getController(AppView view) {
+        if (!cachedViews.containsKey(view)) {
+            preload(view);
         }
-        return (T) cachedViews.get(fxmlFile).getValue();
+        return (T) cachedViews.get(view).getValue();
     }
 
-    public void clear(String fxmlFile) {
-        cachedViews.remove(fxmlFile);
-        LoggerManager.logDebug("Cleared FXML cache: " + fxmlFile);
+    public void clear(AppView view) {
+        cachedViews.remove(view);
+        LoggerManager.logDebug("Cleared FXML cache: " + view.name());
     }
 }

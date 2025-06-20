@@ -6,7 +6,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.suppliq.manufacturepro.Controllers.AddProductController"
+      fx:controller="com.suppliq.manufacturepro.Controllers.AddCustomerController"
       spacing="15" alignment="TOP_RIGHT"
       prefWidth="420" prefHeight="500"
       nodeOrientation="RIGHT_TO_LEFT"
@@ -14,21 +14,21 @@
 
     <!-- כותרת -->
     <Label fx:id="formTitleLabel"
-           text="📦 הוסף מוצר חדש"
+           text="👤 הוסף לקוח חדש"
            styleClass="header-label-dark"
            alignment="CENTER"
            maxWidth="Infinity"/>
 
     <!-- שדות טופס -->
-    <TextField fx:id="nameField" promptText="שם המוצר" styleClass="form-field"/>
-    <TextArea fx:id="descriptionField" promptText="תיאור" styleClass="form-field"/>
-    <TextField fx:id="priceField" promptText="מחיר" styleClass="form-field"/>
-    <TextField fx:id="stockField" promptText="כמות במלאי" styleClass="form-field"/>
-    <TextField fx:id="categoryField" promptText="קטגוריה" styleClass="form-field"/>
+    <TextField fx:id="nameField" promptText="שם הלקוח" styleClass="form-field"/>
+    <TextField fx:id="phoneField" promptText="טלפון" styleClass="form-field"/>
+    <TextField fx:id="emailField" promptText="אימייל" styleClass="form-field"/>
+    <TextField fx:id="addressField" promptText="כתובת" styleClass="form-field"/>
+    <ComboBox fx:id="priceListComboBox" promptText="בחר מחירון" styleClass="form-field"/>
 
     <!-- כפתורים -->
     <HBox spacing="12" alignment="CENTER_RIGHT">
-        <Button text="שמירה" fx:id="saveButton" onAction="#saveProduct" styleClass="save-button"/>
+        <Button text="שמירה" fx:id="saveButton" onAction="#saveCustomer" styleClass="save-button"/>
         <Button text="ביטול" fx:id="cancelButton" onAction="#closeWindow" styleClass="cancel-button"/>
     </HBox>
 </VBox>

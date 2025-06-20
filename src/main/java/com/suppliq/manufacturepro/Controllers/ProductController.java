@@ -1,10 +1,12 @@
 package com.suppliq.manufacturepro.Controllers;
 
+import com.suppliq.manufacturepro.Base.AppCSS;
 import com.suppliq.manufacturepro.Database.DataCache;
 import com.suppliq.manufacturepro.Database.ProductDAO;
 import com.suppliq.manufacturepro.Models.Product;
 import com.suppliq.manufacturepro.Base.AppView;
 import com.suppliq.manufacturepro.Utils.ColumnWidths;
+import com.suppliq.manufacturepro.Utils.LoggerManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -31,9 +33,10 @@ public class ProductController {
     @FXML private TableColumn<Product, String> columnCategory;
     @FXML private TableColumn<Product, Void> columnActions;
     @FXML private TextField searchField;
-    @FXML private Button addProductButton;
-    private final ObservableList<Product> originalProductList = FXCollections.observableArrayList();
 
+    // Observable list of all products – automatically syncs with UI
+    private final ObservableList<Product> originalProductList = FXCollections.observableArrayList();
+    // Filtered view of the product list
     private final FilteredList<Product> filteredProductList = new FilteredList<>(originalProductList, p -> true);
 
     /**
@@ -81,13 +84,23 @@ public class ProductController {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
+
+                // If the row is empty or the index is out of bounds, clear the cell
                 if (empty || getIndex() >= getTableView().getItems().size()) {
                     setGraphic(null);
                     return;
                 }
+
+                // Get the Product instance associated with this row
                 Product currentProduct = getTableView().getItems().get(getIndex());
+
+                // Set action for the "Edit" button – opens the product in edit mode
                 editButton.setOnAction(event -> editProduct(currentProduct));
+
+                // Set action for the "Delete" button – prompts for confirmation and deletes the product
                 deleteButton.setOnAction(event -> deleteProduct(currentProduct));
+
+                // Display both buttons in the current table cell
                 setGraphic(actionBox);
             }
         });
@@ -106,7 +119,8 @@ public class ProductController {
         ColumnWidths.setSmartWidth(columnActions, ColumnWidths.ACTIONS, ColumnWidths.ACTIONS);
 
         // Auto-sizes columns to fill the table based on header and visible content.
-        productTable.setColumnResizePolicy(tv -> true);
+         //productTable.setColumnResizePolicy(tv -> true);
+         productTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     /**
@@ -114,6 +128,10 @@ public class ProductController {
      */
     private void loadProducts() {
         originalProductList.setAll(DataCache.products);
+        if (DataCache.products.isEmpty()) {
+            LoggerManager.logWarning("⚠️ Warning: DataCache.products is empty — did the DAO run?");
+        }
+
     }
 
     /**
@@ -181,6 +199,9 @@ public class ProductController {
             Parent root = loader.load();
             AddProductController controller = loader.getController();
 
+
+
+
             // Pass the product to edit, if applicable
             if (productToEdit != null) {
                 controller.setProductToEdit(productToEdit);
@@ -188,8 +209,14 @@ public class ProductController {
 
             // Show the dialog window (modal)
             Stage dialogStage = new Stage();
-            dialogStage.setScene(new Scene(root));
+            Scene scene = new Scene(root);
+
+            // Apply global application CSS to the dialog (needed since this is a new Scene and doesn't inherit styles)
+            scene.getStylesheets().add(AppCSS.APP_STYLE.getCssPath());
+
+            dialogStage.setScene(scene);
             dialogStage.showAndWait();
+
 
             // Retrieve the result from the form
             Product result = controller.getResult();
@@ -201,15 +228,17 @@ public class ProductController {
                     DataCache.products.add(result);
                 } else {
                     // Edited product: replace in both view and cache
-                    int viewIndex = originalProductList.indexOf(productToEdit);
+                    int listIndex = originalProductList.indexOf(productToEdit);
                     int cacheIndex = DataCache.products.indexOf(productToEdit);
-                    if (viewIndex != -1) originalProductList.set(viewIndex, result);
+                    if (listIndex != -1) originalProductList.set(listIndex, result);
                     if (cacheIndex != -1) DataCache.products.set(cacheIndex, result);
                 }
             }
 
         } catch (IOException e) {
+            LoggerManager.logError("Error loading product dialog", e);
             e.printStackTrace();
+
         }
     }
 

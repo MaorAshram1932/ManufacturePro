@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.suppliq.manufacturepro.Controllers.AddPriceListController"
+            styleClass="dialog-container">
+
+    <VBox spacing="15" alignment="CENTER_RIGHT" nodeOrientation="RIGHT_TO_LEFT" style="-fx-padding: 20">
+        <Label text="הוסף מחירון חדש" styleClass="header-label-dark"/>
+
+        <TextField fx:id="nameField" promptText="שם מחירון" styleClass="form-field"/>
+        <TextArea fx:id="descriptionField" promptText="תיאור (לא חובה)" styleClass="form-field" prefRowCount="3"/>
+
+        <HBox spacing="15" alignment="CENTER_RIGHT">
+            <Button text="שמירה" onAction="#handleSave" styleClass="save-button"/>
+            <Button text="ביטול" onAction="#handleCancel" styleClass="cancel-button"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

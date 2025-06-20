@@ -1,34 +1,39 @@
 package com.suppliq.manufacturepro.Utils;
 
-import javax.swing.table.TableColumn;
+import javafx.scene.control.TableColumn;
 
 public class ColumnWidths {
-    // רוחב קבוע לעמודות צפויות
-    public static final double ID = 60;
-    public static final double NAME = 150;
-    public static final double PRICE = 80;
-    public static final double STOCK = 70;
-    public static final double CATEGORY = 110;
+    // טקסטים
+    public static final double SHORT_TXT = 70;
+    public static final double MID_TXT = 120;
+    public static final double LONG_TXT = 250;
+
+    // מספרים
+    public static final double SHORT_NUM = 50;
+    public static final double MID_NUM = 80;
+    public static final double LONG_NUM = 100;
+
+    // עמודת תיאור
+    public static final double DESCRIPTION_DEFAULT = 250;
+    public static final double DESCRIPTION_MIN = 160;
+
+    // עמודת כפתורים
+    public static final double ACTIONS_DEFAULT = 180;
     public static final double ACTIONS = 180;
 
-    // ערכים עבור עמודות גמישות
-    public static final double DESCRIPTION_DEFAULT = 300;
-    public static final double DESCRIPTION_MAX = 500;
-
-    // תוספת למקרה של scrollbar
-    public static final double SCROLLBAR_PADDING = 2;
-
-    // חישוב דינמי של תיאור בהתבסס על רוחב הטבלה הכולל
-    public static double getDescriptionWidth(double tableWidth) {
-        return tableWidth
-                - ID
-                - NAME
-                - PRICE
-                - STOCK
-                - CATEGORY
-                - ACTIONS
-                - SCROLLBAR_PADDING;
+    // שימושי
+    public static <T> void setFixedWidth(TableColumn<T, ?> column, double width) {
+        column.setPrefWidth(width);
+        column.setMinWidth(width);
+        column.setMaxWidth(width);
     }
 
+    public static <T> void setSmartWidth(TableColumn<T, ?> column, double pref, double min) {
+        column.setPrefWidth(pref);
+        column.setMinWidth(min);
+    }
 
+    public static <T> void setFlexibleWidth(TableColumn<T, ?> column, double pref) {
+        column.setPrefWidth(pref);
+    }
 }

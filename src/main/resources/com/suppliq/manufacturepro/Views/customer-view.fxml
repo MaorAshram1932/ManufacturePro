@@ -9,11 +9,11 @@
 -->
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.suppliq.manufacturepro.Controllers.ProductController"
+            fx:controller="com.suppliq.manufacturepro.Controllers.CustomerController"
             styleClass="page-background">
 
     <!--
-      Main container: vertical layout holding the top header and the product table.
+      Main container: vertical layout holding the top header and the customer table.
       Applies spacing between elements and sets overall RTL layout direction.
     -->
     <VBox fx:id="mainContainer" spacing="15" nodeOrientation="RIGHT_TO_LEFT"
@@ -24,7 +24,7 @@
           styleClass="main-container">
 
         <!--
-          Top bar (HBox): Contains the page title, search field, and 'Add Product' button.
+          Top bar (HBox): Contains the page title, search field, and 'Add Customer' button.
           Elements are aligned to the right and spaced evenly.
         -->
         <HBox spacing="20"
@@ -33,29 +33,29 @@
               styleClass="page-header">
 
             <!-- Page title -->
-            <Label text="📦 ניהול מוצרים" styleClass="page-header-label"/>
+            <Label text="👤 ניהול לקוחות" styleClass="page-header-label"/>
 
             <!-- Flexible spacer pushes content to the sides -->
             <Region fx:id="spacer" HBox.hgrow="ALWAYS"/>
 
-            <!-- Search field for filtering products by name -->
-            <TextField fx:id="searchField" promptText="חפש לפי שם מוצר..." styleClass="search-field"/>
+            <!-- Search field for filtering customers by name -->
+            <TextField fx:id="searchField" promptText="חפש לפי שם / אימייל..." styleClass="search-field"/>
 
-            <!-- Button for adding a new product -->
-            <Button text="➕ הוסף מוצר" fx:id="addProductButton" onAction="#addProduct" styleClass="add-button"/>
+            <!-- Button for adding a new customer -->
+            <Button text="➕ הוסף לקוח" fx:id="addCustomerButton" onAction="#addCustomer" styleClass="add-button"/>
         </HBox>
 
         <!--
-          Table container (AnchorPane): Holds the product table.
+          Table container (AnchorPane): Holds the customer table.
           Fixed height to ensure exactly 10 rows are visible at all times.
         -->
         <AnchorPane fx:id="tableContainer" VBox.vgrow="NEVER">
 
             <!--
-              Product table: Displays a list of products with 6 columns.
+              Customer table: Displays a list of customers.
               Fixed height and cell size to limit to 10 visible rows.
             -->
-            <TableView fx:id="productTable" fixedCellSize="40"
+            <TableView fx:id="customerTable" fixedCellSize="40"
                        prefHeight="430"
                        minHeight="430"
                        maxHeight="430"
@@ -63,15 +63,15 @@
                        AnchorPane.bottomAnchor="0"
                        AnchorPane.leftAnchor="0"
                        AnchorPane.rightAnchor="0"
-                       styleClass="product-table">
+                       styleClass="customer-table">
 
-                <!-- Table columns for displaying product properties -->
+                <!-- Table columns for displaying customer properties -->
                 <columns>
-                    <TableColumn fx:id="columnName" text="שם המוצר"/>
-                    <TableColumn fx:id="columnDescription" text="תיאור"/>
-                    <TableColumn fx:id="columnPrice" text="מחיר (₪)"/>
-                    <TableColumn fx:id="columnStock" text="מלאי"/>
-                    <TableColumn fx:id="columnCategory" text="קטגוריה"/>
+                    <TableColumn fx:id="columnName" text="שם לקוח"/>
+                    <TableColumn fx:id="columnEmail" text="אימייל"/>
+                    <TableColumn fx:id="columnPhone" text="טלפון"/>
+                    <TableColumn fx:id="columnAddress" text="כתובת"/>
+                    <TableColumn fx:id="columnPriceList" text="מחירון"/>
                     <TableColumn fx:id="columnActions" text="פעולות"/>
                 </columns>
             </TableView>

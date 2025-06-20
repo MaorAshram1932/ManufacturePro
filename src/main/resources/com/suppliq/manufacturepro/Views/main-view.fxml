@@ -8,13 +8,13 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.suppliq.manufacturepro.Controllers.MainController"
             fx:id="mainPane"
-            stylesheets="@../Styles/application.css">
+           >
     <top>
         <HBox fx:id="topBar" spacing="20" minHeight="60" alignment="CENTER_LEFT">
             <Label fx:id="reloadLabel" text="🔁" onMouseClicked="#reloadFromSource"
                    style="-fx-font-size: 18px; -fx-cursor: hand;" />
             <Region fx:id="leftSpacer" HBox.hgrow="ALWAYS"/>
-            <Label fx:id="storeNameLabel" text="Store Name" styleClass="top-bar-label" alignment="CENTER"/>
+            <Label fx:id="storeNameLabel" text="Store Name" styleClass="top-bar-label" alignment="BOTTOM_LEFT"/>
             <Region fx:id="rightSpacer" HBox.hgrow="ALWAYS"/>
             <ImageView fx:id="logo" fitHeight="100" fitWidth="200" preserveRatio="true" smooth="true" />
         </HBox>
@@ -23,17 +23,16 @@
 
         <VBox fx:id="sideMenu"
               spacing="0"
-              style="-fx-padding: 0;"
               prefWidth="200"
               minWidth="100"
               maxWidth="250"
               BorderPane.alignment="CENTER">
             <Button text="בית" onAction="#showHome" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="הזמנות" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="הזמנות" onAction="#showOrders" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
             <Button text="מוצרים" onAction="#showProducts" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="דוחות" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="לקוחות" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
-            <Button text="הגדרות" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="מחירונים" onAction="#showPriceLists" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="לקוחות" onAction="#showCustomers" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
+            <Button text="חשבוניות" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
             <Button text="יציאה" styleClass="nav-button" VBox.vgrow="ALWAYS"/>
 
             <Region VBox.vgrow="ALWAYS" />
